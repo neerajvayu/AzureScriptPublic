@@ -1,0 +1,12 @@
+az vm resize \
+  --resource-group neerajvayu \
+  --name myVM \
+  --size Standard_DS3_v2
+
+
+
+az vm show \
+  --resource-group neerajvayu \
+  --name myVM \
+  --query "hardwareProfile" \
+  --output tsv

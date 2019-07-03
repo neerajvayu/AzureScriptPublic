@@ -1,0 +1,21 @@
+az vm extension set \
+  --resource-group neerajvayu \
+  --vm-name myVM \
+  --name CustomScriptExtension \
+  --publisher Microsoft.Compute \
+  --settings "{'fileUris':['https://kabhi-kabhi-mere-dil-me-khayal-aata-hai/configure-iis.ps1']}" \
+  --protected-settings "{'commandToExecute': 'powershell -ExecutionPolicy Unrestricted -File configure-iis.ps1'}"
+
+
+az vm open-port \
+  --name myVM \
+  --resource-group neerajvayu \
+  --port 80
+
+
+az vm show \
+  --name myVM \
+  --resource-group neerajvayu \
+  --show-details \
+  --query [publicIps] \
+  --output tsv

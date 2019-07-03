@@ -1,0 +1,21 @@
+bash
+USERNAME=azureuser
+PASSWORD=$(openssl rand -base64 32)
+
+
+Azure CLI
+az vm create \
+  --name myVM \
+  --resource-group neerajvayu \
+  --image Win2019Datacenter \
+  --size Standard_DS2_v2 \
+  --location eastus \
+  --admin-username $USERNAME \
+  --admin-password $PASSWORD
+
+
+Azure CLI
+az vm get-instance-view \
+  --name myVM \
+  --resource-group neerajvayu \
+  --output table
